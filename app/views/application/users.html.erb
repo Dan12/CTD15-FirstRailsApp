@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="text-center">Most Awesome App</h1>
+  </div>
+  <div class="media">
+    <div class="media-left">
+      <img class="media-object thumbnail" src="<%=@user.imgUrl%>" alt="">
+    </div>
+    <div class="media-body">
+      <h2 class="media-heading"><%=@user.name%> <span class="subtext">Member since <%=@user.membSince%></span></h2>
+      <p><%=@user.description%></p>
+      <h4><b>Location:</b> <span class="subtext"><%=@user.location%><span></h4>
+        <h4><b>Completion:</b></h4>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%=@user.completion%>" aria-valuemin="0" aria-valuemax="100" style="width: <%=@user.completion%>%">
+            <span class="sr-only"><%=@user.completion%>% Complete (success)</span>
+            <%=@user.completion%>%
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

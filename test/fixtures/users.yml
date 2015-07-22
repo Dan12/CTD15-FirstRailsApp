@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  imgUrl: MyString
+  membSince: 1
+  description: MyString
+  location: MyString
+  completion: 1
+
+two:
+  name: MyString
+  imgUrl: MyString
+  membSince: 1
+  description: MyString
+  location: MyString
+  completion: 1
