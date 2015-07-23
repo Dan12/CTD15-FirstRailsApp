@@ -14,3 +14,27 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  
+  var SERVER_URL = "http://ruby-on-rails-114302.nitrousapp.com";
+  
+  $('.submit-btn').click(function(){
+    console.log("clicked");
+    $('body').append('<p>Hello There</p>');
+    submitForm();
+  });
+  
+  function submitForm(){
+    $.ajax({
+        type: "POST",
+        url: "/submitForm",
+        data: {name: $('.name').val(), numbers: $('.nums').val()},
+        success: function(data, textStatus, jqXHR) {
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Error=" + errorThrown);
+        }
+    });
+  }
+});

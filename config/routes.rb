@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get '/temp/2' => 'temp#pg2'
   
   get '/users/:id' => 'application#show'
+  
+  get '/input' => 'application#input'
+  match '/submitForm' => 'application#submit', :via => :post
 end

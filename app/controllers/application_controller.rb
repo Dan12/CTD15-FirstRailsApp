@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  #uncomment to fiz authentication error
+  #skip_before_filter  :verify_authenticity_token
+  
   helper_method :lorem
   
   def lorem
@@ -18,9 +21,35 @@ class ApplicationController < ActionController::Base
     render 'show'
   end
   
+  def input
+    render "input"
+  end
+  
+  def submit
+    puts params
+    #add new user
+    puts "============="
+    puts params["name"]
+    puts params["numbers"]
+    data = params["name"]+" "+params["numbers"]
+    #override
+    #File.open("#{Rails.root}/public/files/temp.txt", 'wb') do |f|
+    #append to file
+    File.open("#{Rails.root}/public/files/temp.txt", 'a') do |f|
+      f.write data+"\n"
+    end
+    puts "recieved"
+    puts "==================="
+    render "input"
+  end
+  
   def show
     @user = User.find_by_id(params["id"])
-    @user.description = lorem
+    if !@user == nil
+      @user.description = lorem
+    else
+      @user = User.last
+    end
     render 'users'
   end
 end
