@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
   
   def submit
-    puts params
+    #puts params
     #add new user
     data = params["name"]+" "+params["numbers"]
     #override
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
   
   def newUser
-    puts params
+    #puts params
     u = User.new
     u.name = params['name']
     u.imgUrl = params['imgUrl']
@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
     u.completion = params['completion'].to_i
     u.description = params['description']
     u.save
-    puts User.all
-    puts u
+    #puts User.all
+    #puts u
   end
 end
