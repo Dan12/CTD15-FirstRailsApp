@@ -28,9 +28,6 @@ class ApplicationController < ActionController::Base
   def submit
     puts params
     #add new user
-    puts "============="
-    puts params["name"]
-    puts params["numbers"]
     data = params["name"]+" "+params["numbers"]
     #override
     #File.open("#{Rails.root}/public/files/temp.txt", 'wb') do |f|
@@ -38,18 +35,34 @@ class ApplicationController < ActionController::Base
     File.open("#{Rails.root}/public/files/temp.txt", 'a') do |f|
       f.write data+"\n"
     end
-    puts "recieved"
-    puts "==================="
-    render "input"
   end
   
   def show
     @user = User.find_by_id(params["id"])
-    if !@user == nil
+    if !(@user == nil)
       @user.description = lorem
     else
       @user = User.last
+      puts "Last User"
     end
     render 'users'
+  end
+  
+  def userForm
+    render 'newUser'
+  end
+  
+  def newUser
+    puts params
+    u = User.new
+    u.name = params['name']
+    u.imgUrl = params['imgUrl']
+    u.membSince = params['membSince'].to_i
+    u.location = params['location']
+    u.completion = params['completion'].to_i
+    u.description = params['description']
+    u.save
+    puts User.all
+    puts u
   end
 end

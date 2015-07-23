@@ -22,8 +22,26 @@ $(document).ready(function(){
   $('.submit-btn').click(function(){
     console.log("clicked");
     $('body').append('<p>Hello There</p>');
-    submitForm();
+    if($('h1').hasClass('newUser')){
+      newUser();
+    }
+    else{
+      submitForm();
+    }
   });
+  
+  function newUser(){
+    $.ajax({
+        type: "POST",
+        url: "/submitNewUser",
+        data: {name: $('.name').val(), imgUrl: $('.imgUrl').val(), membSince: $('.membSince').val(), location: $('.location').val(), completion: $('.completion').val(), description:""},
+        success: function(data, textStatus, jqXHR) {
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Error=" + errorThrown);
+        }
+    });
+  }
   
   function submitForm(){
     $.ajax({
