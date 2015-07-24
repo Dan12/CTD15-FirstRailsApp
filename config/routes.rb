@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   match '/submitForm' => 'application#submit', :via => :post
   
   get '/newUser' => 'application#userForm'
-  match '/submitNewUser' => 'application#newUser', :via => :post
+  get '/submitNewUser' => 'application#newUser'
 end

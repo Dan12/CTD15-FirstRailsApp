@@ -64,5 +64,6 @@ class ApplicationController < ActionController::Base
     u.save
     #puts User.all
     #puts u
+    redirect_to "/users/#{u.id}"
   end
 end

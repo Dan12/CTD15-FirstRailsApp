@@ -1,24 +1,24 @@
 <h1 class = "newUser">Enter a new user</h1>
-<form>
+<form action = "/submitNewUser">
   <div class="form-group">
     <label for="exampleInputEmail1">Name</label>
-    <input type="" class="form-control name" placeholder="name">
+    <input type="text" name = "name" class="form-control name" placeholder="name">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Image Url</label>
-    <input type="" class="form-control imgUrl" placeholder="http://">
+    <input type="text" name = "imgUrl" class="form-control imgUrl" placeholder="http://">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">membSince</label>
-    <input type="" class="form-control membSince" placeholder="1990">
+    <input type="text" name = "membSince" class="form-control membSince" placeholder="1990">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Location</label>
-    <input type="" class="form-control location" placeholder="Brooklyn">
+    <input type="text" name = "location" class="form-control location" placeholder="Brooklyn">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Completion</label>
-    <input type="" class="form-control completion" placeholder="50">
+    <input type="text" name = "completion" class="form-control completion" placeholder="50">
   </div>
-  <div class="btn btn-default submit-btn">Submit</div>
+  <input type = "submit" class="btn btn-default">
 </form>
