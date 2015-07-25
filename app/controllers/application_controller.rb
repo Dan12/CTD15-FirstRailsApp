@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  #uncomment to fiz authentication error
+  #uncomment to fix authentication error
   #skip_before_filter  :verify_authenticity_token
   
   helper_method :lorem
@@ -41,11 +41,10 @@ class ApplicationController < ActionController::Base
     @user = User.find_by_id(params["id"])
     if !(@user == nil)
       @user.description = lorem
+      render 'users'
     else
-      @user = User.last
-      puts "Last User"
+      render 'noUser'
     end
-    render 'users'
   end
   
   def userForm
@@ -65,5 +64,28 @@ class ApplicationController < ActionController::Base
     #puts User.all
     #puts u
     redirect_to "/users/#{u.id}"
+  end
+  
+  def editUserPage
+    @user = User.find_by_id(params['id'])
+    render 'editUser'
+  end
+  
+  def editUser
+    u = User.find_by_id(params['id'])
+    u.name = params['name']
+    u.imgUrl = params['imgUrl']
+    u.membSince = params['membSince'].to_i
+    u.location = params['location']
+    u.completion = params['completion'].to_i
+    u.description = params['description']
+    u.save
+    redirect_to "/users/#{u.id}"
+  end
+  
+  def deleteUser
+    u = User.find_by_id(params['id'])
+    u.destroy
+    redirect_to "/users/#{User.last.id}"
   end
 end

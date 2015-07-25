@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   
   get '/newUser' => 'application#userForm'
   get '/submitNewUser' => 'application#newUser'
+  
+  get '/editUser/:id' => 'application#editUserPage'
+  get 'submitEditUser/:id' => 'application#ed'
+  
+  get '/deleteUser/:id' => 'application#deleteUser'
 end
