@@ -1,12 +1,15 @@
 <h1>Welcome To My Page</h1>
 <a href="/pg1"><h2>Go to the subpage</h2></a>
-<br>
-<a href="/users/1">First User</a>
-<br>
-<a href="/users/2">Second User</a>
-<br>
-<a href="/users/3">Third User</a>
-<br>
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%=user.name%> - 
+      <a href="/users/<%=user.id%>">show</a> |
+      <a href="/editUser/<%=user.id%>">edit</a> |
+      <a href="/deleteUser/<%=user.id%>">destroy</a> 
+    </li>
+  <% end %>
+</ul>
 <a href="/newUser">New User</a>
 <!-- <img src="/assets/img1.jpg"> -->
 <!-- <%= image_tag("img1.jpg") %> -->

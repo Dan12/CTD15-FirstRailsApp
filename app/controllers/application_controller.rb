@@ -25,6 +25,11 @@ class ApplicationController < ActionController::Base
     render "input"
   end
   
+  def welcome
+    @users = User.all
+    render "welcome"
+  end
+  
   def submit
     #puts params
     #add new user
@@ -86,6 +91,6 @@ class ApplicationController < ActionController::Base
   def deleteUser
     u = User.find_by_id(params['id'])
     u.destroy
-    redirect_to "/users/#{User.last.id}"
+    redirect_to "/welcome"
   end
 end

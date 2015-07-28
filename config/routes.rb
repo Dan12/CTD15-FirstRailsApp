@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'application#welcome'
+  
+  get "/welcome" => 'application#welcome'
   get '/pg1' => 'application#pg1'
   get '/test' => 'application#testpage'
   get '/fir' => 'application#first'
